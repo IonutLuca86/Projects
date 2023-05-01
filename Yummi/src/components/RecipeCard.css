@@ -1,0 +1,22 @@
+.card-container {
+  width: 20rem;
+  height: 25rem;
+  border: 1px solid black;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+}
+.recipe-image {
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
+}
+.recipe-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.recipe-title {
+}
