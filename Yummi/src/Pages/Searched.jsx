@@ -11,7 +11,7 @@ export default function Searched() {
     const getRecipes = async (search) => {
     const apiKey = '27bb6d5c926f4d7a9031e952cb4c9849';
     try {
-        const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${search}&addRecipeInformation=true`;
+        const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${search}&addRecipeInformation=true&number=40`;
         const response = await fetch(url);
         const result = await response.json();               
         setSearchedRecipies(result.results);

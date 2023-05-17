@@ -5,7 +5,12 @@
   align-items: center;
 }
 .navbar {
-  background-color: #5c52e0;
+  background: linear-gradient(
+    90deg,
+    rgba(4, 243, 252, 1) 0%,
+    rgba(4, 4, 181, 1) 50%,
+    rgba(2, 28, 87, 1) 100%
+  );
   width: 100%;
 }
 .searchbar {
@@ -15,7 +20,12 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background-color: #664cd9;
+  background: linear-gradient(
+    90deg,
+    rgba(4, 243, 252, 1) 0%,
+    rgba(4, 4, 181, 1) 50%,
+    rgba(2, 28, 87, 1) 100%
+  );
 }
 
 .input-search {
@@ -47,12 +57,13 @@
   font-weight: 700;
 }
 .navlink {
-  color: black;
+  color: rgb(232, 221, 221);
   text-decoration: none;
   margin-right: 2rem;
 }
 .navlink:hover {
   transform: scale(1.5);
+  color: rgb(232, 221, 221);
 }
 @media screen and (max-width: 728px) {
   .input-search {

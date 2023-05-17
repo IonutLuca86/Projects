@@ -8,12 +8,13 @@ import { useNavigate } from 'react-router-dom'
 
 export default function Navigationbar() {
 
-    const [search,setSearch] = useState("");
+    const [search,setSearch] = useState();
     const navigate = useNavigate();
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        navigate('searched/'+search)
+        navigate('searched/'+search);
+        this.setSearch("");
     }
 
 
@@ -34,7 +35,7 @@ export default function Navigationbar() {
         <nav className='searchbar'>
             <form className='search-container' onSubmit={handleSubmit}>
                 <input type="text" placeholder='Search...' 
-                className='input-search'
+                className='input-search' 
                 onChange={(e) => setSearch(e.target.value)}/>
                 <button className='filter-button'>Filter</button>
             </form>

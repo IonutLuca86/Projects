@@ -1,12 +1,20 @@
 import './Contact.css'
 import emailjs from '@emailjs/browser';
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 
 
 export default function Contact() {
     const [state, setState] = useState({user_name: "", user_email: "", message: ""});
     const form = useRef();
+    const [isAlertVisible, setAlertVisible] = useState(false);
+
+    const handleButtonClick = () => {
+      setAlertVisible(true);
+      setTimeout(() => {
+        setAlertVisible(false);
+      },5000);
+    }
     
   const sendEmail = (e) => {
     e.preventDefault();
@@ -16,23 +24,19 @@ export default function Contact() {
         'template_bgsvdhk', 
         form.current, 
         'rU_tPkWOBGCoU9Lzv')
-      .then((result) => {
-          alert("Success! Your message has been sent. Thank you for your feedback!");
-      }, (error) => {
-          alert("Error! Something went wrong! Try again!");
-      });
+      
       setState({user_name: "", user_email: "", message: ""});
     
       
   };
 
   return (
-    
     <div className="contact-container">
         <h2>Do you want to get in touch?</h2>
         <h3>Just complete the form below and your message will be sent to us!</h3>
          <hr></hr>    
         <form ref={form} onSubmit={sendEmail} className='contact-form'>
+        <input type="hidden" name="from_name" value="GlobalCuisine" />
         <label>Name :</label>
         <input type="text" name="user_name" className='form-input' 
          required value={state.user_name}
@@ -46,11 +50,14 @@ export default function Contact() {
          value={state.message}
          onChange={(e) =>{ setState({...state, message: e.target.value})}}/>
         <button type="submit" value="Send" className='form-button' 
-         >Send</button>
+         onClick={handleButtonClick}>Send</button>
+         {isAlertVisible && 
+         <div className='alert'>
+          <label>Your message has been sent. Thank you for your feedback!</label>
+          </div>}
         </form>
         
     </div>
-    
   );
 }
 
