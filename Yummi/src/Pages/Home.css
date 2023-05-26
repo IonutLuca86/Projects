@@ -1,5 +1,5 @@
 .main-container {
-  width: 98%;
+  width: 85%;
   margin: auto;
   margin-top: 3rem;
   display: flex;
@@ -8,18 +8,26 @@
   align-items: center;
 }
 .popular {
-  width: 90%;
+  width: 100%;
   margin: auto;
+}
+.pop-recipes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 .popular-title {
   margin-bottom: 1rem;
   margin-left: -2rem;
+  color: rgb(36, 64, 135);
 }
 @media screen and (max-width: 768px) {
   .main-container {
-    width: 98%;
+    width: 90%;
   }
   .popular {
-    padding-left: 1.5rem;
+    padding-left: 3rem;
   }
 }

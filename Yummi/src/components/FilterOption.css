@@ -1,0 +1,32 @@
+.option-title {
+  font-size: x-large;
+  font-weight: 600;
+  color: aliceblue;
+  background: none;
+  border: 0;
+  margin-top: 2rem;
+}
+.option-buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.option-button,
+.option-button-clicked {
+  color: aliceblue;
+  background-color: rgb(49, 62, 131);
+  border-radius: 10px;
+  font-weight: 500;
+}
+.option-button:hover {
+  transform: scale(1.1);
+}
+.option-button-clicked {
+  background-color: darkred;
+}
+.solid {
+  border-bottom: 3px solid black;
+}

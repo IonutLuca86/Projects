@@ -8,3 +8,51 @@
   margin: auto;
   padding-top: 2rem;
 }
+.loadmore {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.total,
+.loadbtn,
+.select {
+  color: rgb(29, 38, 92);
+  font-size: larger;
+  font-weight: 600;
+  margin-bottom: 0 !important;
+}
+.buttons {
+  width: 16%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.loadbtn {
+  background-color: rgb(203, 219, 219);
+  border-radius: 5px;
+  border: 0;
+}
+.loadbtn:hover {
+  background-color: aliceblue;
+}
+.top-container {
+  width: 80%;
+  margin: auto;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.sort-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.select {
+  margin-left: 10px;
+}

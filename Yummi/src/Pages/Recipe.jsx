@@ -28,8 +28,8 @@ const params = useParams();
     return (
         similars ?
         <>
-        <h3>Similars Recipes:</h3>
-                
+        <h2 className='ingredients-title'>Similars Recipes:</h2>
+         <hr className='solid' />       
                     <ul className='list'>
                             {similars.map((similar) =>
                                 
@@ -70,6 +70,10 @@ export default function Recipe() {
     const params = useParams();   
     const [recipe,setRecipe] =useState();
     const [wineList, setWineList] = useState();
+    const [btnIngredients,setBtnIngredients] = useState(true);
+    const [btnInstructions,setBtnInstructions] = useState(false);
+    const [btnSimilars,setBtnSimilars] = useState(false);
+
     const getRecipe = async (id) => {
     const apiKey = '27bb6d5c926f4d7a9031e952cb4c9849';
     try {
@@ -87,25 +91,79 @@ export default function Recipe() {
   
 
     useEffect(() => {
-        getRecipe(params.id)       
-    },[])    
+        getRecipe(params.id)               
+    },[])  
+
     const summary = '<h3>'+recipe?.summary.split('. ',1)+'</h3>'; // splits and saves the first sentence of summary atribute of the recipe
+    
+    const Ingredients = () => {
+        return (
+                <div className='ingredients'>           
+                        <h2 className='ingredients-title'>Ingredients : </h2> 
+                        <hr className='solid' />           
+                    <div>
+                        <ul className='list'>
+                            {recipe.extendedIngredients.map((ingredient) =>
+                                <li key={ingredient.id} className='list-element'>{ingredient.original}</li>
+                            )}                        
+                        </ul>
+                        </div>
+                        </div>
+        )
+    }
+    const Instructions = () => {
+        return (
+            <div className='instructions' >            
+                        <h2 className='ingredients-title'>Instructions : </h2> 
+                        <hr className='solid' />            
+                    <div>
+                        <ol className='list'>
+                            {recipe.analyzedInstructions.map((instruction,index) => {
+                                return <div key={index} >
+                                    {instruction.steps.map((step) => <li key={step.number}>
+                                        <span>{step.step}</span></li>)}
+                                </div>
+                                
+                            } 
+                            )}                        
+                        </ol>
+                        <h5>You can find more detailed information about this recipe 
+                            <a href={recipe.sourceUrl} target='_blank' className='wineLink' rel="noreferrer"> here</a> !</h5>
+                    </div>
+                </div>       
+        )
+    }
+    const DisplayIngredients = () => {
+        setBtnIngredients(true);
+        setBtnInstructions(false);
+        setBtnSimilars(false);
+    } 
+    const DisplayInStructions = () => {
+        setBtnIngredients(false);
+        setBtnInstructions(true);
+        setBtnSimilars(false);
+    }
+    const DisplaySimilars = () => {
+        setBtnIngredients(false);
+        setBtnInstructions(false);
+        setBtnSimilars(true);
+    }       
+            
     
 
         return (
             recipe ?
-            <div className="recipe-container">
-                <div className='recipe-info'>
-                           
+            
+                <div className='recipe-info'>                           
                     <div className="title-container"> 
                         <h1 className='recipe-title'>{recipe.title}</h1>
                         <div className='title-info'>                       
                             <div className='image-container'>                   
-                            <img src={recipe.image} alt="recipe image" 
-                            className='recipe-img' ></img>
-                            </div>
+                            <img src={recipe.image} alt="recipe image"                             
+                            className='recipe-img' ></img>                      
+                        </div>
                             <div className='summary'>                            
-                                <span>{parse(summary)}</span>
+                                <span className='summary-text'>{parse(summary)}</span>
                                 <div className='health-info'>
                                     <div className='hinfo-border'>
                                         <h5 >Time to prepare</h5>
@@ -119,73 +177,58 @@ export default function Recipe() {
                                         <h6>Health score</h6>
                                         <h4 className='last'>{recipe.healthScore} points</h4>
                                     </div>   
-                                </div>                            
+                                </div> 
+                                <div className='recipe-buttons'>
+                                    <button className='recipe-button' onClick={DisplayIngredients}>Ingredients</button>
+                                    <button className='recipe-button' onClick={DisplayInStructions}>Instructions</button>
+                                    <button className='recipe-button-last' onClick={DisplaySimilars}>Similars</button>                                    
+                                </div>
+                                
                             </div>
                         </div> 
+                        <div className='display-info'>
+                                    <div className="recipe-ingredients"> 
+                                        {btnIngredients && <Ingredients />}
+                                        {btnInstructions && <Instructions />}
+                                        {btnSimilars && <Similars />}
+                                    </div>  
+                                    <div className='aside'>
+                                    <div className="nutrition-info" >
+                                        <h3 className='nutrition-title'>Nutritions Facts : </h3>
+                                        <hr className='solid'></hr>                    
+                                        <p className="serving">Serving size : <span>
+                                            {recipe.nutrition.weightPerServing.amount}{recipe.nutrition.weightPerServing.unit}</span></p>
+                                            <hr className="light"/>
+                                            <p className="caloric">Caloric breakdown: </p>
+                                            <div className="caloricinfo">
+                                            <p>Carbs: <span>
+                                            {recipe.nutrition.caloricBreakdown.percentCarbs}%</span></p>
+                                            <p>Fat: <span>
+                                            {recipe.nutrition.caloricBreakdown.percentFat}%</span></p>
+                                            <p>Protein: <span>
+                                            {recipe.nutrition.caloricBreakdown.percentProtein}%</span></p>
+                                            </div>
+                                            <hr className="light"/>
+                                            <div className="nutrients">
+                                            {recipe.nutrition.nutrients.map((nutrient,index) => <p key={index} className="nutrient">{nutrient.name}: <span>
+                                            {nutrient.amount}{nutrient.unit}</span></p> )}
+                                            </div>                    
+                                    
+                                   
+                                    </div>  
+                                </div>
+                                
+                             
+                                </div>
                     </div>
                 
 
 
-                <div className="recipe-ingredients"> 
-                    <div className='ingredients'>           
-                        <h2 className='recipe-title'>Ingredients : </h2> 
-                        <hr className='solid' />           
-                    <div>
-                        <ul className='list'>
-                            {recipe.extendedIngredients.map((ingredient) =>
-                                <li key={ingredient.id} className='list-element'>{ingredient.original}</li>
-                            )}                        
-                        </ul>
-                        </div>
-                        </div>
-                    <div className='instructions' >            
-                        <h2 className='recipe-title'>Instructions : </h2> 
-                        <hr className='solid' />            
-                    <div>
-                        <ol className='list'>
-                            {recipe.analyzedInstructions.map((instruction,index) => {
-                                return <div key={index} >
-                                    {instruction.steps.map((step) => <li key={step.number}>
-                                        <span>{step.step}</span></li>)}
-                                </div>
-                                
-                            } 
-                            )}                        
-                        </ol>
-                    </div>
-                </div>                
-            </div>
+                
             <Wines props={wineList} />
             
-            </div> 
-            <div className='aside'>
-                <div className="nutrition-info" >
-                    <h3 className='nutrition-title'>Nutritions Facts : </h3>
-                    <hr className='solid'></hr>                    
-                    <p className="serving">Serving size : <span>
-                        {recipe.nutrition.weightPerServing.amount}{recipe.nutrition.weightPerServing.unit}</span></p>
-                        <hr className="light"/>
-                        <p className="caloric">Caloric breakdown: </p>
-                        <div className="caloricinfo">
-                        <p>Carbs: <span>
-                        {recipe.nutrition.caloricBreakdown.percentCarbs}%</span></p>
-                        <p>Fat: <span>
-                        {recipe.nutrition.caloricBreakdown.percentFat}%</span></p>
-                        <p>Protein: <span>
-                        {recipe.nutrition.caloricBreakdown.percentProtein}%</span></p>
-                        </div>
-                        <hr className="light"/>
-                        <div className="nutrients">
-                        {recipe.nutrition.nutrients.map((nutrient,index) => <p key={index} className="nutrient">{nutrient.name}: <span>
-                        {nutrient.amount}{nutrient.unit}</span></p> )}
-                        </div>                    
-                  
-                 </div>  
-                 <div className='nutrition-info'>
-                    <Similars className="similars"></Similars>
-                 </div>
-                 
-                </div>
+          
+            
             </div> : <BeatLoader className='loader' />
             
         )

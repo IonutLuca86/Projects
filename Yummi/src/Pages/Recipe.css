@@ -1,44 +1,11 @@
-.recipe-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  margin: auto;
-  width: 80%;
-  margin-top: 2rem;
-}
-
 .recipe-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 75%;
-}
-.aside {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 20%;
-}
-.nutrition-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
-  color: black;
-  width: 98%;
-  margin-bottom: 2rem;
-}
-.recipe-title {
-  font-size: xx-large;
-  width: auto;
-  font-weight: 700;
-  margin-bottom: 2rem;
-  color: rgb(36, 64, 135);
+  margin: auto;
+  width: 80%;
+  margin-top: 2rem;
 }
 .title-container {
   display: flex;
@@ -51,34 +18,48 @@
   color: black;
   text-align: center;
   margin-bottom: 1rem;
-  padding-top: 1rem;
+  padding-top: 2rem;
+}
+.recipe-title {
+  font-size: 50px;
+  width: auto;
+  font-weight: 900;
+  margin-bottom: 2rem;
+  color: rgb(36, 64, 135);
 }
 .title-info {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   margin: auto;
   margin-bottom: 1rem;
+  /* width: 95%; */
 }
-.img-container {
-  width: auto;
+.image-container {
+  width: 40%;
   margin: auto;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 .recipe-img {
-  width: 20vw;
-  height: 25vw;
+  width: 30rem;
+  height: 30rem;
   object-fit: cover;
   border-radius: 5px;
+  margin-left: 1rem;
 }
 .summary {
-  width: auto;
+  width: 50%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   margin-right: 2rem;
+  vertical-align: top;
+  height: 30rem;
 }
 .health-info {
   display: flex;
@@ -86,43 +67,69 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 .hinfo-border {
-  width: 30rem;
+  width: 25rem;
   border: 1px solid gray;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0;
+  margin-left: 1rem;
 }
-h6,
-h4,
-h3 {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  color: rgb(36, 64, 135);
+.recipe-buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  padding-left: 10px;
 }
-.last {
-  margin-bottom: 0;
+.recipe-button {
+  background-color: rgba(36, 64, 135, 0.5);
+  margin-right: 1rem;
+  border: 0;
+  border-radius: 10px;
+  height: 2rem;
+  width: 8rem;
 }
-.recipe-ingredients {
+.recipe-button-last {
+  background-color: rgba(36, 64, 135, 0.5);
+  border: 0;
+  border-radius: 10px;
+  height: 2rem;
+  width: 8rem;
+}
+.display-info {
+  width: 90%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-start;
-  border-radius: 10px;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.3);
+  align-items: center;
+}
+.recipe-ingredients {
   color: black;
   text-align: center;
   margin-bottom: 1rem;
   padding-top: 1rem;
+  width: 70%;
 }
 .ingredients {
-  width: 40%;
+  width: 98%;
+  padding-left: 1rem;
 }
 .instructions {
-  width: 59%;
+  width: 98%;
+  padding-left: 1rem;
+}
+.ingredients-title {
+  font-size: xx-large;
+  width: auto;
+  font-weight: 700;
+  color: rgb(36, 64, 135);
+  text-align: left;
 }
 .list {
   margin: 0;
@@ -143,56 +150,40 @@ h3 {
   width: 100%;
   height: 1px;
 }
+
+.aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+}
+.nutrition-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  width: 98%;
+  margin-bottom: 1rem;
+  border: 1px solid black;
+}
+
+h6,
+h4,
+h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: rgb(36, 64, 135);
+}
+.last {
+  margin-bottom: 0;
+}
+
 .nutrition-title {
   display: flex;
   justify-content: center;
   margin: 0.5rem;
-}
-
-@media screen and (max-width: 768px) {
-  .recipe-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    margin: auto;
-    width: 98%;
-  }
-  .aside {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    width: 98%;
-  }
-  .recipe-info {
-    width: 98%;
-  }
-  .title-container {
-    width: 98%;
-  }
-  .title-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .recipe-ingredients {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-  .ingredients,
-  .instructions {
-    width: 98%;
-    margin: auto;
-  }
-  .recipe-img {
-    width: 15rem;
-    height: 20rem;
-  }
 }
 
 .light {
@@ -209,6 +200,8 @@ h3 {
   align-items: center;
   font-size: small;
   line-height: 2px;
+  overflow-y: auto;
+  height: 14rem;
 }
 
 .nutrient {
@@ -262,7 +255,7 @@ h3 {
   align-items: center;
   border-radius: 10px;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.3);
   color: black;
   text-align: center;
   margin-bottom: 2rem;
@@ -296,14 +289,56 @@ h3 {
   text-decoration: none;
   font-size: large;
   font-weight: 600;
-  color: #b57070;
+  color: rgb(36, 64, 135);
 }
 .wineLink {
-  color: #b57070;
+  color: rgb(36, 64, 135);
   text-align: center;
 }
 .loader {
   position: fixed;
   top: 50%;
   left: 50%;
+}
+
+@media screen and (max-width: 1300px) {
+  .recipe-img {
+    width: 25rem;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .recipe-img {
+    width: 20rem;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .title-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .summary {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .display-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .recipe-ingredients {
+    width: 90%;
+  }
+  .aside {
+    width: 90%;
+  }
+}
+.step {
+  color: black;
+  font-weight: 400;
+}
+input[type="checkbox"]:checked + .step {
+  text-decoration: line-through;
 }
