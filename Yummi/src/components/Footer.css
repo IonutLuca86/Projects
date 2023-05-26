@@ -9,6 +9,7 @@
   height: 6rem;
   margin: auto;
   position: absolute;
+  margin-top: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

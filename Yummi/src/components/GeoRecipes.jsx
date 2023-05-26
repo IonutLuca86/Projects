@@ -5,7 +5,7 @@ import RecipeCard from './RecipeCard';
 import GetCuisine from './GetCuisine';
 
 
-export default function GeoRecipes() {
+export default function GeoRecipes({limit}) {
   let cuisine;
   const [geoRecipes,setGeoRecipes] = useState([]);
   const [currCoords,setCurrCoords] = useState([]);
@@ -68,7 +68,7 @@ export default function GeoRecipes() {
     <>
     <h1 className='popular-title'>Popular Recipes from your region</h1>
     <div className='pop-recipes'>      
-        {geoRecipes.results?.map(recipe => {
+        {geoRecipes.results?.slice(0,limit).map(recipe => {
             return (
                 <RecipeCard key={recipe.id} props={recipe} ></RecipeCard>
             )

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react'
 import './FilterOption.css'
+import { FaArrowDown, FaArrowRight } from 'react-icons/fa';
 
 const OptButton = (props) => {
     const [clicked,setClicked] = useState(false);
@@ -9,10 +10,8 @@ const OptButton = (props) => {
     },[clicked])
     function checkClicked() {
         const check =JSON.parse(localStorage.getItem(`${props.name}button`));
-        if(check) {
-            setClicked(true);            
-                   
-        }
+        if(check) 
+            setClicked(true);  
     }
 
     function handleClick() {
@@ -52,7 +51,7 @@ const FilterOption = ({title,option,updateOptions}) => {
   
     return (
         <div className="option-container">
-            <button className="option-title" onClick={() => setOpen(!open)}>{title}</button>
+            <button className="option-title" onClick={() => setOpen(!open)}>{open? <FaArrowDown />:<FaArrowRight />}{title}</button>
             <hr className='solid'></hr>
             {open? <DisplayOptions/>:<></>}
         </div>

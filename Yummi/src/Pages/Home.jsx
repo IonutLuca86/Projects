@@ -15,6 +15,7 @@ const defaultOptions = {
 
 
 export default function Home() {
+    
     const [popular,setPopular] = useState([]);
     const [search,setSearch] = useState("");
     const [options,setOptions] = useState(defaultOptions);
@@ -30,7 +31,7 @@ export default function Home() {
       if(localPop) 
         setPopular(JSON.parse(localPop))
       else {
-        const url = `https://api.spoonacular.com/recipes/random?number=6&apiKey=${apiKey}`;
+        const url = `https://api.spoonacular.com/recipes/random?number=50&apiKey=${apiKey}`;
         const response = await fetch(url);
         const result = await response.json();               
         setPopular(result);
@@ -46,7 +47,7 @@ export default function Home() {
         getPopular()
       
     },[])
-   console.log(searchedRecipies)
+   
     return(
         <>
         <Searchbar submited={submited} setSubmited={setSubmited} search={search} setSearch={setSearch} 
@@ -58,14 +59,14 @@ export default function Home() {
             <div className='popular'>
                 <h1 className='popular-title'>Popular Recipes worldwide</h1> 
                 <div className='pop-recipes'>
-                    {popular.recipes?.map((recipe) => {
+                    {popular.recipes?.slice(0,6).map((recipe) => {
                         return(<RecipeCard key={recipe.id} props={recipe}></RecipeCard>
                       );                        
                     })}  
                     </div>                            
             </div>
             <div className='popular'>
-             <GeoRecipes></GeoRecipes> 
+             <GeoRecipes limit={6}></GeoRecipes> 
            </div>
         </div>}
         

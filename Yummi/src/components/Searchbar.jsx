@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import {  useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { FaHome, FaList, FaSearch } from 'react-icons/fa'
 import FilterMenu from './FilterMenu'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
@@ -14,16 +14,28 @@ function Searchbar({submited,setSubmited,search,setSearch,options,setOptions,set
     const [buttonTrigger,setButtonTrigger] = useState(false);
     const [refresh,setRefresh] = useState(false);      
   
+    const filterRef = useRef();
+    useEffect(() => {
+        let handler = (e) => { 
+            if(!filterRef.current.contains(e.target)) {
+            setButtonTrigger(false);
+            }}
+        document.addEventListener("mousedown",handler);
+        return() => {document.removeEventListener("mousedown",handler)}
+    },[buttonTrigger])
+
     const handleSubmit = async (e) =>{
         e.preventDefault(); 
         let recipes = await GetRecipes(search,options,0);
         console.log(recipes);
         setSearchedRecipies(recipes.results) 
-        setTotal(recipes.totalResults)            
-        setSubmited(!submited);
+        setTotal(recipes.totalResults)
+        if(submited === false)            
+            setSubmited(!submited);
         setSearch("");
-        //ClearAll();
+        ClearAll();
     }
+  
 
     const updateOptions = (option,title) => {
         const optionCont = options;
@@ -66,6 +78,7 @@ function Searchbar({submited,setSubmited,search,setSearch,options,setOptions,set
         let count = 0;
             for (const elem in options){
                 selectedValues[count] = options[elem].map((opt) => {
+                    console.log(opt)
                     return(<button key={opt} onClick={() =>removeQuerry(opt,elem)} className='querry-button'>{opt}<AiOutlineCloseCircle size={20}/></button>)
                 })
                 count++;
@@ -75,11 +88,29 @@ function Searchbar({submited,setSubmited,search,setSearch,options,setOptions,set
           
     }
     function ClearAll() {
-        setOptions(defaultOptions);
+        for (const elem in options){
+                 options[elem].map((opt) => {
+                   let check = JSON.parse(localStorage.getItem(`${opt}button`));
+                   if(check)
+                        localStorage.removeItem(`${opt}button`);
+                })               
+                }        
+        const reset = {
+                        regions: [],
+                        mealtypes: [],
+                        diets: [],
+                        intolerances: []}
+        setOptions(reset);
+       
+        
     }
+    
+    
+    
   return (
     <>
     <div className='searchbar'>
+        <div className='searchbar-input-container'>
             <Link to="/" className="home-button" onClick={()=> setSubmited(!submited)}><FaHome size={35}/></Link>
             <form className='search-container' onSubmit={handleSubmit}>
                 <input type="text" placeholder='Search...' 
@@ -89,15 +120,19 @@ function Searchbar({submited,setSubmited,search,setSearch,options,setOptions,set
             </form>
             <button className='filter-button' 
             onClick={() => setButtonTrigger(!buttonTrigger)}><FaList /></button>
-            
             </div>
-            <FilterMenu trigger={buttonTrigger} 
-            setFilterTrigger={setButtonTrigger} updateOptions={updateOptions}
-            clearAll={ClearAll}></FilterMenu>
             <div className='filter-select-display'>
             <SelectedOptions />
-            </div></>
-        
+            </div>
+        </div >
+        <div ref={filterRef}>
+            <FilterMenu  trigger={buttonTrigger} options={options}
+            setFilterTrigger={setButtonTrigger} updateOptions={updateOptions}
+            ClearAll={ClearAll}></FilterMenu>
+        </div>
+            
+            
+        </>
   )
 }
 

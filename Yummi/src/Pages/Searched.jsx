@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import GetRecipes from "../components/GetRecipes";
 import RecipeCard from "../components/RecipeCard";

@@ -5,7 +5,7 @@ import {AiOutlineCloseCircle} from 'react-icons/ai'
 import FilterOption from './FilterOption';
 
 
-function FilterMenu({trigger,setFilterTrigger,updateOptions,clearAll}) {
+function FilterMenu({trigger,setFilterTrigger,updateOptions,ClearAll}) {
     const regions = ["African","American","Asian","British","Chinese","Eastern European",
                     "European","French","German","Greek","Indian","Irish","Italian","Japanese",
                     "Latin American","Mediteranean","Mexican","Nordic","Spanish",
@@ -16,7 +16,7 @@ function FilterMenu({trigger,setFilterTrigger,updateOptions,clearAll}) {
     const intolerances = ["Dairy","Egg","Gluten","Grain","Peanut","Seafood","Sesame",
                         "Shellfish","Soy","Sulfite","Tree Nut","Wheat"];
     
-
+  
     
 
   return (
@@ -33,7 +33,7 @@ function FilterMenu({trigger,setFilterTrigger,updateOptions,clearAll}) {
         <FilterOption title={"Intolerances"} option={intolerances} updateOptions={updateOptions}></FilterOption>  
     </div>
       <div className='clear-button'>
-        <button className='clearBtn' onClick={() =>clearAll()}>Clear All Filters</button>
+        <button id="clearFilters"  className='clearBtn' onClick={() =>ClearAll()}>Clear All Filters</button>
       </div>
     </div> : "" 
   )
