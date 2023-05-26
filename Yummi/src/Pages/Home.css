@@ -20,7 +20,7 @@
 }
 .popular-title {
   margin-bottom: 1rem;
-  margin-left: -2rem;
+  /* margin-left: -2rem; */
   color: rgb(36, 64, 135);
 }
 @media screen and (max-width: 768px) {

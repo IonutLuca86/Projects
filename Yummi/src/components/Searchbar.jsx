@@ -119,7 +119,7 @@ function Searchbar({submited,setSubmited,search,setSearch,options,setOptions,set
                 <button type="submit" className='search-icon'><FaSearch size={20}/></button>  
             </form>
             <button className='filter-button' 
-            onClick={() => setButtonTrigger(!buttonTrigger)}><FaList /></button>
+            onClick={() => setButtonTrigger(!buttonTrigger)}><FaList size={30} /></button>
             </div>
             <div className='filter-select-display'>
             <SelectedOptions />

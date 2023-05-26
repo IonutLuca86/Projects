@@ -111,7 +111,7 @@ const handleClick = () => {
             })}            
         </div>
         <div className="loadmore">
-            <p className="total">{next}/{total}</p>
+            <p className="total">{next>total? total:next}/{total}</p>
             <div className="buttons">
             <button onClick={handleClick} className="loadbtn">Load More</button>
             <button onClick={scrollToTop} className="loadbtn">Back To Top</button>

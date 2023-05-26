@@ -2,6 +2,9 @@
 import './navbar.css'
 import {Link} from 'react-router-dom'
 import logo from '../assets/logo-no-background.png'
+import {BsGeoAltFill} from 'react-icons/bs'
+import {FaHome} from 'react-icons/fa'
+import {GiPopeCrown} from 'react-icons/gi'
 
 
 
@@ -19,9 +22,9 @@ export default function Navigationbar() {
                 </Link>
             </div>
             <div className='navlinks-container'>
-                <Link to="/" className='navlink'>Home</Link>
-                <Link to="/popular" className='navlink'>Popular Recipes</Link>
-                <Link to="/region" className='navlink'>Recipes form were you are</Link>
+                <Link to="/" className='navlink'><FaHome size={35} /></Link>
+                <Link to="/populars" className='navlink'><GiPopeCrown size={37}/></Link>
+                <Link to="/georecipes" className='navlink'><BsGeoAltFill size={32} /></Link>
             </div>
         </div>        
             

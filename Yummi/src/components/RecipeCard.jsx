@@ -21,7 +21,7 @@ const Cheap = () => {return (<><p className="cheap">Cheap</p></>)}
    
 return (
     <div className="card-container">
-        <Link to={"/recipe/"+ props.id} >
+        <Link to={"/recipe/"+ props.id} className="card-link">
         <div className="card-img">
         <img src={props.image} alt="recipe"  className="recipe-image"></img>
         <div className="tags">

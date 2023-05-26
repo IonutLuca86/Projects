@@ -5,6 +5,7 @@ import '@splidejs/react-splide/css';
 import GeoRecipes from '../components/GeoRecipes';
 import Searchbar from '../components/Searchbar';
 import Searched from './Searched';
+import getPopular from '../components/GetPopulars';
 
 const defaultOptions = {
     regions: [],
@@ -24,27 +25,10 @@ export default function Home() {
    
     const [total, setTotal] = useState();  
     
-    const getPopular = async () => {
-    const apiKey = 'f27d562bd85b4cd5a482eb0b9108beeb';
-    try {
-        const localPop = sessionStorage.getItem('popRecipes');
-      if(localPop) 
-        setPopular(JSON.parse(localPop))
-      else {
-        const url = `https://api.spoonacular.com/recipes/random?number=50&apiKey=${apiKey}`;
-        const response = await fetch(url);
-        const result = await response.json();               
-        setPopular(result);
-        console.log(result.recipes)
-        sessionStorage.setItem('popRecipes', JSON.stringify(result));
-        }        
-      } catch (e) {
-        console.log(e);
-      }
-    }
+    const LoadRecipes = async() => {setPopular(await getPopular())}
 
     useEffect(() => {
-        getPopular()
+        LoadRecipes();
       
     },[])
    

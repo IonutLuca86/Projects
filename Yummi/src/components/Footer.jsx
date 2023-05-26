@@ -10,7 +10,7 @@ function Footer() {
             <Link to="/contact" className="footer-link">Contact</Link>
             <a href="https://www.linkedin.com/in/ionut-catalin-luca-b4938924b/" target="_blank" rel="noreferrer" ><FaLinkedin size={30}></FaLinkedin></a>
         </div>
-        <p className="copyright">@Copyrighted Ionut Luca </p>
+        <p className="copyright">@Copyright Ionut Luca </p>
        </div>
   )
 }
