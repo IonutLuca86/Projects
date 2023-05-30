@@ -17,7 +17,7 @@ function Populars() {
                 <h1 className='popular-title'>Popular Recipes worldwide</h1> 
                 <div className='pop-recipes'>
                     {popular.recipes?.map((recipe) => {
-                        return(<RecipeCard key={recipe.id} props={recipe}></RecipeCard>
+                        return(<RecipeCard key={recipe.id} recipe={recipe}></RecipeCard>
                       );                        
                     })}  
                     </div>                            
