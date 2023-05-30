@@ -79,7 +79,7 @@ export default function Recipe() {
     const [btnInstructions,setBtnInstructions] = useState(false);
     const [btnSimilars,setBtnSimilars] = useState(false);
     const [favClicked,setFavClicked] = useState(false);
-    const [favoriter,setFavoriter] = useState([]);
+    
 
     const handleFavClick = (recipe) => {
        const check = localStorage.getItem(`${recipe.id}`);
@@ -102,7 +102,7 @@ export default function Recipe() {
     
 
     const getRecipe = async (id) => {
-    const apiKey = '27bb6d5c926f4d7a9031e952cb4c9849';
+    const apiKey = '97d98ad64a6e4dc7bec58703a2f7debe';
     try {
         const url = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${apiKey}&includeNutrition=true`;
         const response = await fetch(url);

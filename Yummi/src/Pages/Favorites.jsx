@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './Favorites.css'
 import RecipeCard from '../components/RecipeCard';
-import { Link } from 'react-router-dom';
+
 
 function Favorites() {
     const [favorites,setFavorites] = useState([]);
