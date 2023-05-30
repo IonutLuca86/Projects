@@ -7,10 +7,15 @@ import parse from 'html-react-parser'
 import "@splidejs/splide/dist/css/splide.min.css";
 import { Link } from 'react-router-dom'
 import { BeatLoader } from 'react-spinners';
+import ImageCheck from '../components/ImageCheck'
+import comingSoon from '../assets/coming-soon.png'
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
 const Similars = () => {
-const params = useParams();
+    const params = useParams();
     const [similars, setSimilars] = useState([]);
+    
+    
     const getSimilars = async (id) => {
     const apiKey = '95c09065f6a64154ab4d56a5ef9c980d';
     try {
@@ -73,6 +78,28 @@ export default function Recipe() {
     const [btnIngredients,setBtnIngredients] = useState(true);
     const [btnInstructions,setBtnInstructions] = useState(false);
     const [btnSimilars,setBtnSimilars] = useState(false);
+    const [favClicked,setFavClicked] = useState(false);
+    const [favoriter,setFavoriter] = useState([]);
+
+    const handleFavClick = (recipe) => {
+       const check = localStorage.getItem(`${recipe.id}`);
+       if(check) {
+        setFavClicked(!favClicked);
+        localStorage.removeItem(`${recipe.id}`);
+       }
+       else {
+        setFavClicked(!favClicked);
+        localStorage.setItem(`${recipe.id}`,JSON.stringify(recipe));
+       }
+    }
+
+    const checkFavorites = (key) => {
+        const check = localStorage.getItem(`${key}`);
+        if(check)
+            setFavClicked(true);
+    }
+   
+    
 
     const getRecipe = async (id) => {
     const apiKey = '27bb6d5c926f4d7a9031e952cb4c9849';
@@ -91,7 +118,8 @@ export default function Recipe() {
   
 
     useEffect(() => {
-        getRecipe(params.id)               
+        getRecipe(params.id);
+        checkFavorites(params.id);                       
     },[])  
 
     const summary = '<h3>'+recipe?.summary.split('. ',1)+'</h3>'; // splits and saves the first sentence of summary atribute of the recipe
@@ -113,7 +141,7 @@ export default function Recipe() {
     }
     const Instructions = () => {
         return (
-            <div className='instructions' >            
+            <div className='ingredients' >            
                         <h2 className='ingredients-title'>Instructions : </h2> 
                         <hr className='solid' />            
                     <div>
@@ -159,8 +187,8 @@ export default function Recipe() {
                         <h1 className='recipe-title'>{recipe.title}</h1>
                         <div className='title-info'>                       
                             <div className='image-container'>                   
-                            <img src={recipe.image} alt="recipe image"                             
-                            className='recipe-img' ></img>                      
+                           <img src={ImageCheck(recipe)?  recipe.image :comingSoon } 
+                           className='recipe-img'></img>                     
                         </div>
                             <div className='summary'>                            
                                 <span className='summary-text'>{parse(summary)}</span>
@@ -181,7 +209,10 @@ export default function Recipe() {
                                 <div className='recipe-buttons'>
                                     <button className='recipe-button' onClick={DisplayIngredients}>Ingredients</button>
                                     <button className='recipe-button' onClick={DisplayInStructions}>Instructions</button>
-                                    <button className='recipe-button-last' onClick={DisplaySimilars}>Similars</button>                                    
+                                    <button className='recipe-button-last' onClick={DisplaySimilars}>Similars</button>
+                                    <button className="favoriter-button" onClick={() => handleFavClick(recipe)}>{favClicked? 
+                                    <AiFillHeart size={35} color={'red'} />:<AiOutlineHeart size={35}/>}</button>
+                                                 
                                 </div>
                                 
                             </div>

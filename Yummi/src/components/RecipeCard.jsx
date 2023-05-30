@@ -2,6 +2,10 @@
 import { Link } from "react-router-dom";
 import './RecipeCard.css'
 import { FaRegClock , FaPizzaSlice} from 'react-icons/fa'
+import ImageCheck from '../components/ImageCheck'
+import comingSoon from '../assets/coming-soon.png'
+
+
 
 
 function truncate(input) {      
@@ -16,37 +20,39 @@ const VHealthy = () => {return (<><p className="vhealthy">VeryHealthy</p></>)}
 const Cheap = () => {return (<><p className="cheap">Cheap</p></>)}
         
     
- const RecipeCard = ({props}) => {  
-     
+ const RecipeCard = ({recipe,setShowSearchBar}) => {  
+    
+    console.log(recipe) 
    
 return (
     <div className="card-container">
-        <Link to={"/recipe/"+ props.id} className="card-link">
+        <Link to={"/recipe/"+ recipe.id} className="card-link" onClick={() => setShowSearchBar(false)}>
         <div className="card-img">
-        <img src={props.image} alt="recipe"  className="recipe-image"></img>
+        <img src={ImageCheck(recipe)?   recipe.image: comingSoon} 
+                           className='recipe-image'></img>
         <div className="tags">
-                {props.vegetarian? <Vegetarian />:<></>}
-                {props.vegan? <Vegan />:<></>}
-                {props.glutenFree? <Gluten />:<></>}
-                {props.dairyFree? <Dairy />:<></>}
-                {props.veryHealthy? <VHealthy />:<></>}
-                {props.cheap? <Cheap />:<></>}
+                {recipe.vegetarian? <Vegetarian />:<></>}
+                {recipe.vegan? <Vegan />:<></>}
+                {recipe.glutenFree? <Gluten />:<></>}
+                {recipe.dairyFree? <Dairy />:<></>}
+                {recipe.veryHealthy? <VHealthy />:<></>}
+                {recipe.cheap? <Cheap />:<></>}
             </div> 
-                       
+                   
         </div> 
         <div className="card-info">
             <div><p className="recipe-card-title">
-                {props.title.length < 20? props.title:truncate(props.title)}</p>
+                {recipe.title.length < 20? recipe.title:truncate(recipe.title)}</p>
             </div>
             
             <div className="servings">
                 <div className="time">
                     <FaRegClock />
-                    <h5 className="text">{props.readyInMinutes} min</h5>
+                    <h5 className="text">{recipe.readyInMinutes} min</h5>
                 </div>
                 <div className="portions">
                     <FaPizzaSlice />
-                    <h5 className="text">{props.servings}</h5>
+                    <h5 className="text">{recipe.servings}</h5>
                 </div>
                 
             </div>

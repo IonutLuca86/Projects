@@ -6,13 +6,19 @@ import { AiOutlineCloseCircle } from 'react-icons/ai'
 import './navbar.css'
 import {Link} from 'react-router-dom'
 import GetRecipes from './GetRecipes'
+import SearchedRecipes from './SearchedRecipes'
 
 
-function Searchbar({submited,setSubmited,search,setSearch,options,setOptions,setSearchedRecipies,setTotal,defaultOptions}) {
+
+
+function Searchbar({submited,setSubmited,search,setSearch,options,setOptions,setSearchedRecipies,searchedRecipies,total,setTotal,setShowSearchBar}) {
 
     
     const [buttonTrigger,setButtonTrigger] = useState(false);
-    const [refresh,setRefresh] = useState(false);      
+    const [refresh,setRefresh] = useState(false); 
+    const [tempSearch,setTempSearch] = useState("");
+    
+  
   
     const filterRef = useRef();
     useEffect(() => {
@@ -32,9 +38,14 @@ function Searchbar({submited,setSubmited,search,setSearch,options,setOptions,set
         setTotal(recipes.totalResults)
         if(submited === false)            
             setSubmited(!submited);
+        // setCloseSearch(true) ;
+        setTempSearch(search);                      
         setSearch("");
         ClearAll();
-    }
+        }
+
+       
+        
   
 
     const updateOptions = (option,title) => {
@@ -105,10 +116,21 @@ function Searchbar({submited,setSubmited,search,setSearch,options,setOptions,set
         
     }
     
-    
+  const displaySearch = () => {
+    if(submited)
+        return (
+        <div className='searched-recipes'>
+            <SearchedRecipes  search={tempSearch} options={options} total={total} 
+            searchedRecipies={searchedRecipies} setSearchedRecipies={setSearchedRecipies} 
+            setShowSearchBar={setShowSearchBar}/>
+        </div>)
+    else          
+         return (<></>)       
+  } 
     
   return (
     <>
+   
     <div className='searchbar'>
         <div className='searchbar-input-container'>
             <Link to="/" className="home-button" onClick={()=> setSubmited(!submited)}><FaHome size={35}/></Link>
@@ -130,9 +152,11 @@ function Searchbar({submited,setSubmited,search,setSearch,options,setOptions,set
             setFilterTrigger={setButtonTrigger} updateOptions={updateOptions}
             ClearAll={ClearAll}></FilterMenu>
         </div>
+        {displaySearch()}
+         </>
+       
             
-            
-        </>
+      
   )
 }
 

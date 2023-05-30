@@ -7,11 +7,12 @@ import About from './Pages/About'
 import Contact from './Pages/Contact'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css'
-import Searched from './Pages/Searched'
+// import Searched from './Pages/Searched'
 import Recipe from './Pages/Recipe';
 import ErrorPage from './Pages/ErrorPage'
 import Populars from './Pages/Populars';
 import LocationRecipes from './Pages/LocationRecipes';
+import Favorites from './Pages/Favorites';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,10 +20,11 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path='about' element={<About />} />
       <Route path='contact' element={<Contact />} />
-      <Route path='/searched/:search' element={<Searched />} />
+      {/* <Route path='/searched/:search' element={<Searched />} /> */}
       <Route path='/recipe/:id' element={<Recipe />} />
       <Route path='/populars' element={<Populars />} />
       <Route path='/georecipes' element={<LocationRecipes />} />
+      <Route path='/favorites' element={<Favorites />} />
     </Route>
   )
 )

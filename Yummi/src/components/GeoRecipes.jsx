@@ -3,16 +3,27 @@ import { useEffect, useState } from 'react'
 import { BeatLoader } from 'react-spinners';
 import RecipeCard from './RecipeCard';
 import GetCuisine from './GetCuisine';
+import { Link } from 'react-router-dom';
 
 
 export default function GeoRecipes({limit}) {
   let cuisine;
   const [geoRecipes,setGeoRecipes] = useState([]);
   const [currCoords,setCurrCoords] = useState([]);
+  const path = window.location.pathname;
+  const [showButton,setShowButton] = useState(false);
+  const getPath = () => {
+    if(path === "/georecipes")
+      setShowButton(true);
+    else
+      setShowButton(false)
+
+  }
 
 
   useEffect(() => {
-    LoadData();     
+    LoadData(); 
+    getPath();    
   },[])
 
   const LoadData = async () => {
@@ -66,11 +77,15 @@ export default function GeoRecipes({limit}) {
   return (
     geoRecipes? 
     <>
-    <h1 className='popular-title'>Popular Recipes from your region</h1>
+    
+    <div className='fline'>
+                <h1 className='popular-title'>Popular Recipes from your region</h1>
+                {showButton?  <></>: <Link to="/georecipes" className='seeAll'>See More</Link>} 
+                </div>
     <div className='pop-recipes'>      
         {geoRecipes.results?.slice(0,limit).map(recipe => {
             return (
-                <RecipeCard key={recipe.id} props={recipe} ></RecipeCard>
+                <RecipeCard key={recipe.id} recipe={recipe} ></RecipeCard>
             )
         })}
       </div>

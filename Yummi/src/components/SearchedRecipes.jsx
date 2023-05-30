@@ -1,42 +1,44 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
-import GetRecipes from "../components/GetRecipes";
-import RecipeCard from "../components/RecipeCard";
-import './Searched.css'
-
-
+import { useState,useEffect } from "react";
+import GetRecipes from "./GetRecipes";
+import RecipeCard from "./RecipeCard";
+import './SearchedRecipes.css'
 
 let newPosts = [];
 const perPage = 28;
 
-export default function Searched({search,options,total,searchedRecipies,setSearchedRecipies}) {
-      
-
+function SearchedRecipes({search,options,total,searchedRecipies,setSearchedRecipies,setShowSearchBar}) {
+    
     const [sortType, setSortType] = useState("");
     const [isSorted,setIsSorded] = useState(false)
     const [orderedList,setOrderedList] = useState([]);
     const [next,setNext] = useState(perPage);
     
-   
-    useEffect(() => {      
-        UpdateRecipes(sortType);
-       
-    },[sortType])
-      // useEffect(() => {
-      //   setIsSorded(isSorted);
-      // },[isSorted])
-
-    const getMore =async (end) => {           
-            const newRecipes = await GetRecipes(search,options,end);
-            newPosts = searchedRecipies.concat(newRecipes);
-            setSearchedRecipies(newPosts);
-                }
-const handleClick = () => {
-    getMore(next+perPage);
-    setNext(next+perPage)
-   
-}
+    
+    
   
+    
+    useEffect(() => {      
+        UpdateRecipes(sortType);              
+    },[sortType])
+
+   useEffect(() => {
+    UpdateRecipes(sortType)
+   },[searchedRecipies])
+    
+    const getMore =async (offset) => { 
+            let oldRecipes  = searchedRecipies;                 
+            const newRecipes = await GetRecipes(search,options,offset);
+            console.log(newRecipes.results)
+            newPosts = oldRecipes.concat(newRecipes.results);            
+            setSearchedRecipies(newPosts);
+           
+                }
+const handleClick = () => { 
+     getMore(next);
+     setNext(next+perPage);    
+    }
+
  
   const scrollToTop = () =>{
     window.scrollTo({
@@ -80,12 +82,12 @@ const handleClick = () => {
         break;
     }
     } 
-    
+   console.log(orderedList)
     return(
         <>
         <div className="top-container">
-            <p className="total"><b><i>{total}</i></b> recipes found</p>
-            <div className="sort-menu">
+            <p className="total"><b><i>{total}</i></b> recipes found for <i>{search}</i></p>
+                <div className="sort-menu">
                 <p className="total">Sort by</p>
                 <select defaultValue={'none'} className='select' 
                     onChange={(e) => setSortType(e.target.value)}>
@@ -102,18 +104,19 @@ const handleClick = () => {
         <div className="recipes-container">
             {isSorted? orderedList.map((recipe,index) => {
                 return(                    
-                      <RecipeCard key={index} props={recipe} />   
+                      <RecipeCard key={index} recipe={recipe} setShowSearchBar={setShowSearchBar} />   
                 );                
             }) : searchedRecipies.map((recipe,index) => {
                 return(                    
-                      <RecipeCard key={index} props={recipe} />   
+                      <RecipeCard key={index} recipe={recipe} setShowSearchBar={setShowSearchBar} />   
                 );                
             })}            
+            
         </div>
         <div className="loadmore">
             <p className="total">{next>total? total:next}/{total}</p>
             <div className="buttons">
-            <button onClick={handleClick} className="loadbtn">Load More</button>
+            <button onClick={() => handleClick()} className="loadbtn">Load More</button>
             <button onClick={scrollToTop} className="loadbtn">Back To Top</button>
             </div>
             
@@ -122,3 +125,5 @@ const handleClick = () => {
     )
 
 }
+
+export default SearchedRecipes

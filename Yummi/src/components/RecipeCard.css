@@ -22,9 +22,12 @@
 }
 .recipe-image {
   width: inherit;
+  height: inherit;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+
   position: absolute;
+  overflow: hidden;
 }
 .recipe-card-title {
   font-size: medium;
@@ -85,6 +88,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   margin: auto;
   padding: 0;
   position: inherit;

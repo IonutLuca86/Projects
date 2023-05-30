@@ -1,0 +1,12 @@
+.favorites-container {
+  min-height: 70vh;
+  width: 80%;
+  margin: auto;
+}
+.fav-recipes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}

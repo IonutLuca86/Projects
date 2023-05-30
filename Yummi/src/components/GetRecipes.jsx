@@ -6,7 +6,7 @@ export default async function GetRecipes(query,options,offset) {
   let intolerances = options.intolerances.join(',');
   let recipes;
      try {
-      const local = sessionStorage.getItem(`${query+cuisine+mealtype+diet+intolerances}`);
+      const local = sessionStorage.getItem(`${query+cuisine+mealtype+diet+intolerances+offset}`);
       if(local) 
         recipes = (JSON.parse(local))
       else {
@@ -20,7 +20,7 @@ export default async function GetRecipes(query,options,offset) {
         const data = await fetch(url);
         recipes = await data.json();        
         console.log(recipes.results)
-        sessionStorage.setItem(`${query+cuisine+mealtype+diet+intolerances}`, JSON.stringify(recipes))
+        sessionStorage.setItem(`${query+cuisine+mealtype+diet+intolerances+offset}`, JSON.stringify(recipes))
       }
     }
     catch(e) {console.log(e)}
