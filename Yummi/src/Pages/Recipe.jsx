@@ -17,9 +17,9 @@ const Similars = () => {
     
     
     const getSimilars = async (id) => {
-    const apiKey = '95c09065f6a64154ab4d56a5ef9c980d';
+    const apiKey2 = '95c09065f6a64154ab4d56a5ef9c980d';
     try {
-        const url = `https://api.spoonacular.com/recipes/${id}/similar?apiKey=${apiKey}`;
+        const url = `https://api.spoonacular.com/recipes/${id}/similar?apiKey=${apiKey2}`;
         const response = await fetch(url);
         const result = await response.json();               
         setSimilars(result);        
