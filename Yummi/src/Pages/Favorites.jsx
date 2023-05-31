@@ -8,7 +8,7 @@ function Favorites() {
 
     const getAllFavorites = () => {
         let fav = [];
-        let keys = Object.keys(localStorage) || [];
+        let keys = Object.keys(localStorage);
         let i= keys.length;
         while (i--) { 
             let temp = localStorage.getItem(keys[i])

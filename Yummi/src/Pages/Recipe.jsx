@@ -82,8 +82,8 @@ export default function Recipe() {
     
 
     const handleFavClick = (recipe) => {
-       const check = localStorage.getItem(`${recipe.id}`) || [];
-       if(check && check != []) {
+       const check = localStorage.getItem(`${recipe.id}`);
+       if(check) {
         setFavClicked(!favClicked);
         localStorage.removeItem(`${recipe.id}`);
        }
@@ -118,7 +118,7 @@ export default function Recipe() {
 
     useEffect(() => {
         getRecipe(params.id);
-        //checkFavorites(params.id);                       
+        checkFavorites(params.id);                       
     },[])  
 
     const summary = '<h3>'+recipe?.summary.split('. ',1)+'</h3>'; // splits and saves the first sentence of summary atribute of the recipe
