@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 import { BeatLoader } from 'react-spinners';
 import ImageCheck from '../components/ImageCheck'
 import comingSoon from '../assets/coming-soon.png'
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+//import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
 const Similars = () => {
     const params = useParams();
@@ -78,26 +78,26 @@ export default function Recipe() {
     const [btnIngredients,setBtnIngredients] = useState(true);
     const [btnInstructions,setBtnInstructions] = useState(false);
     const [btnSimilars,setBtnSimilars] = useState(false);
-    const [favClicked,setFavClicked] = useState(false);
+    // const [favClicked,setFavClicked] = useState(false);
     
 
-    const handleFavClick = (recipe) => {
-       const check = localStorage.getItem(`${recipe.id}`) || [];
-       if(check && check != []) {
-        setFavClicked(!favClicked);
-        localStorage.removeItem(`${recipe.id}`);
-       }
-       else {
-        setFavClicked(!favClicked);
-        localStorage.setItem(`${recipe.id}`,JSON.stringify(recipe));
-       }
-    }
+    // const handleFavClick = (recipe) => {
+    //    const check = localStorage.getItem(`${recipe.id}`) || [];
+    //    if(check && check != []) {
+    //     setFavClicked(!favClicked);
+    //     localStorage.removeItem(`${recipe.id}`);
+    //    }
+    //    else {
+    //     setFavClicked(!favClicked);
+    //     localStorage.setItem(`${recipe.id}`,JSON.stringify(recipe));
+    //    }
+    // }
 
-    const checkFavorites = (key) => {
-        const check = localStorage.getItem(`${key}`);
-        if(check)
-            setFavClicked(true);
-    }
+    // const checkFavorites = (key) => {
+    //     const check = localStorage.getItem(`${key}`);
+    //     if(check)
+    //         setFavClicked(true);
+    // }
    
     
 
@@ -118,7 +118,7 @@ export default function Recipe() {
 
     useEffect(() => {
         getRecipe(params.id);
-        checkFavorites(params.id);                       
+        //checkFavorites(params.id);                       
     },[])  
 
     const summary = '<h3>'+recipe?.summary.split('. ',1)+'</h3>'; // splits and saves the first sentence of summary atribute of the recipe
@@ -209,8 +209,8 @@ export default function Recipe() {
                                     <button className='recipe-button' onClick={DisplayIngredients}>Ingredients</button>
                                     <button className='recipe-button' onClick={DisplayInStructions}>Instructions</button>
                                     <button className='recipe-button-last' onClick={DisplaySimilars}>Similars</button>
-                                    <button className="favoriter-button" onClick={() => handleFavClick(recipe)}>{favClicked? 
-                                    <AiFillHeart size={35} color={'red'} />:<AiOutlineHeart size={35}/>}</button>
+                                    {/* <button className="favoriter-button" onClick={() => handleFavClick(recipe)}>{favClicked? 
+                                    <AiFillHeart size={35} color={'red'} />:<AiOutlineHeart size={35}/>}</button> */}
                                                  
                                 </div>
                                 

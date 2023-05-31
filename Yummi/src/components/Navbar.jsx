@@ -7,7 +7,7 @@ import {FaHome, FaSearch} from 'react-icons/fa'
 import {GiPopeCrown} from 'react-icons/gi'
 import Searchbar from './Searchbar'
 import { useState } from 'react'
-import { AiOutlineHeart } from 'react-icons/ai'
+//import { AiOutlineHeart } from 'react-icons/ai'
 
 
 const defaultOptions = {
@@ -42,7 +42,7 @@ export default function Navigationbar() {
                 <Link to="/" className='navlink' onClick={() => setShowSearchBar(false)}><FaHome size={35} /></Link>
                 <Link to="/populars" className='navlink' onClick={() => setShowSearchBar(false)}><GiPopeCrown size={37}/></Link>
                 <Link to="/georecipes" className='navlink' onClick={() => setShowSearchBar(false)}><BsGeoAltFill size={32} /></Link>
-                <Link to="/favorites" className='navlink' onClick={() => setShowSearchBar(false)}><AiOutlineHeart size={32} /></Link>
+                {/* <Link to="/favorites" className='navlink' onClick={() => setShowSearchBar(false)}><AiOutlineHeart size={32} /></Link> */}
                 <button onClick={() => setShowSearchBar(!showSearchbar)} className='navbar-searchbtn'><FaSearch size={35}/></button>
             </div>
         </div>        
