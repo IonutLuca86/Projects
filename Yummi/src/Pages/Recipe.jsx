@@ -108,8 +108,7 @@ export default function Recipe() {
         const response = await fetch(url);
         const result = await response.json();               
         setRecipe(result);
-        setWineList(result.winePairing) 
-        console.log(result)       
+        setWineList(result.winePairing)              
       } catch (e) {
         console.log(e);
       }
