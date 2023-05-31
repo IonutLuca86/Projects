@@ -82,8 +82,8 @@ export default function Recipe() {
     
 
     const handleFavClick = (recipe) => {
-       const check = localStorage.getItem(`${recipe.id}`);
-       if(check) {
+       const check = localStorage.getItem(`${recipe.id}`) || [];
+       if(check && check != []) {
         setFavClicked(!favClicked);
         localStorage.removeItem(`${recipe.id}`);
        }
