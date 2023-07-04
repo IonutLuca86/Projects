@@ -1,0 +1,1 @@
+﻿mongodb+srv://IthsDatabase:Database1201@cluster0.bn3gcdh.mongodb.net/?retryWrites=true&w=majority

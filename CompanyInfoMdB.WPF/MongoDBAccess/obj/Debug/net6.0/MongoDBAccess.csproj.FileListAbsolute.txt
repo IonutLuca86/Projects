@@ -1,0 +1,12 @@
+D:\ITHS_repositories\CompanyInfoMdB.WPF\MongoDBAccess\obj\Debug\net6.0\MongoDBAccess.csproj.AssemblyReference.cache
+D:\ITHS_repositories\CompanyInfoMdB.WPF\MongoDBAccess\obj\Debug\net6.0\MongoDBAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\ITHS_repositories\CompanyInfoMdB.WPF\MongoDBAccess\obj\Debug\net6.0\MongoDBAccess.AssemblyInfoInputs.cache
+D:\ITHS_repositories\CompanyInfoMdB.WPF\MongoDBAccess\obj\Debug\net6.0\MongoDBAccess.AssemblyInfo.cs
+D:\ITHS_repositories\CompanyInfoMdB.WPF\MongoDBAccess\obj\Debug\net6.0\MongoDBAccess.csproj.CoreCompileInputs.cache
+D:\ITHS_repositories\CompanyInfoMdB.WPF\MongoDBAccess\bin\Debug\net6.0\MongoDBAccess.deps.json
+D:\ITHS_repositories\CompanyInfoMdB.WPF\MongoDBAccess\bin\Debug\net6.0\MongoDBAccess.dll
+D:\ITHS_repositories\CompanyInfoMdB.WPF\MongoDBAccess\bin\Debug\net6.0\MongoDBAccess.pdb
+D:\ITHS_repositories\CompanyInfoMdB.WPF\MongoDBAccess\obj\Debug\net6.0\MongoDBAccess.dll
+D:\ITHS_repositories\CompanyInfoMdB.WPF\MongoDBAccess\obj\Debug\net6.0\refint\MongoDBAccess.dll
+D:\ITHS_repositories\CompanyInfoMdB.WPF\MongoDBAccess\obj\Debug\net6.0\MongoDBAccess.pdb
+D:\ITHS_repositories\CompanyInfoMdB.WPF\MongoDBAccess\obj\Debug\net6.0\ref\MongoDBAccess.dll

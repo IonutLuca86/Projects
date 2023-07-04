@@ -1,0 +1,136 @@
+﻿<Window x:Class="CompanyInfoMdB.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CompanyInfoMdB"
+        mc:Ignorable="d"
+Title="CompanyInfo" Height="680" Width="850" Background="SlateGray" MinHeight="460" MinWidth="850">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"></RowDefinition>
+            <RowDefinition Height="415*"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+            <ColumnDefinition Width="780*"></ColumnDefinition>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TabControl Grid.Column="1" Grid.Row="1" TabStripPlacement="Left" BorderBrush="Black" BorderThickness="2">
+
+            <TabItem Header="Companies" Background="SlateGray" FontSize="14" FontWeight="DemiBold" BorderBrush="Black" BorderThickness="3">
+                <Grid Background="SlateGray" >
+                    <TabControl  BorderBrush="Black" BorderThickness="3">
+                        <TabItem Header="   Display   " Background="SlateGray">
+                            <Grid Background="SlateGray">
+
+                                <Button Name="showAllCompanies" Content="Show Companies Info" HorizontalAlignment="Left" Height="30" Margin="23,428,0,0" VerticalAlignment="Top" Width="200" Click="showAllCompanies_Click"/>
+                                <DataGrid Name="allCompaniesDG" HorizontalAlignment="Left" SelectionMode="Single" ClipboardCopyMode="ExcludeHeader" IsReadOnly="True" AutoGenerateColumns="False" Height="250" Margin="17,152,0,0" VerticalAlignment="Top" Width="650" SelectionChanged="allCompaniesDG_SelectionChanged" >
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn x:Name="cId" Header="ID" Width="140" Binding="{Binding CompanyId}"></DataGridTextColumn>
+                                        <DataGridTextColumn x:Name="cName" Header="Company Name" Width="180" Binding="{Binding CompanyName}"></DataGridTextColumn>
+                                        <DataGridTextColumn x:Name="cOrgNr" Header="Organisation Number" Width="180" Binding="{Binding OrganisationNummer}"></DataGridTextColumn>
+                                        <DataGridTextColumn x:Name="cMOffice" Header="Main Office" Width="150" Binding="{Binding MainOffice}"></DataGridTextColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <TextBox Name="companiesIdTb" HorizontalAlignment="Left" Height="30" Margin="23,53,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150"/>
+                                <TextBox Name="companiesNameTb" HorizontalAlignment="Left" Height="30" Margin="184,53,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150"/>
+                                <TextBox Name="orgNrTb" HorizontalAlignment="Left" Height="30" Margin="347,53,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150"/>
+                                <TextBox Name="mOfficeTb" HorizontalAlignment="Left" Margin="511,53,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" Height="30"/>
+                                <Button Name="cSearch" Content="Search" HorizontalAlignment="Left" Margin="23,101,0,0" VerticalAlignment="Top" Width="150" Height="30" Click="cSearch_Click"/>
+                                <Button Name="cInsert" Content="Insert" HorizontalAlignment="Left" Margin="184,101,0,0" VerticalAlignment="Top" Width="150" Height="30" Click="cInsert_Click"/>
+                                <Button Name="cUpdate" Content="Update" HorizontalAlignment="Left" Margin="347,101,0,0" VerticalAlignment="Top" Width="150" Height="30" Click="cUpdate_Click"/>
+                                <Button Name="cDelete" Content="Delete" HorizontalAlignment="Left" Margin="510,101,0,0" VerticalAlignment="Top" Width="150" Height="30" Click="cDelete_Click"/>
+                                <Label Content="Company ID" HorizontalAlignment="Left" Margin="36,19,0,0" VerticalAlignment="Top"/>
+                                <Label Content="Company Name" HorizontalAlignment="Left" Margin="191,19,0,0" VerticalAlignment="Top"/>
+                                <Label Content="Organisation Number" HorizontalAlignment="Left" Margin="343,19,0,0" VerticalAlignment="Top"/>
+                                <Label Content="Main Office" HorizontalAlignment="Left" Margin="538,19,0,0" VerticalAlignment="Top"/>
+                                <Button Name="clearCbtn" Content="Clear" HorizontalAlignment="Left" Margin="548,428,0,0" VerticalAlignment="Top" Width="120" Height="30" Click="clearCbtn_Click"/>
+                            </Grid>
+                        </TabItem>                       
+
+                    </TabControl>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Departaments" Background="SlateGray" FontSize="14" FontWeight="DemiBold" BorderBrush="Black" BorderThickness="3" Initialized="DepTabItem_Initialized">
+                <Grid Background="SlateGray">
+                    <TabControl  BorderBrush="Black" BorderThickness="3">
+                        <TabItem Header="Display" Background="SlateGray">
+                            <Grid Background="SlateGray">
+                                <TextBox Name="depIdTb" HorizontalAlignment="Left" Height="30" Margin="23,53,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150"/>
+                                <TextBox Name="depNameTb" HorizontalAlignment="Left" Height="30" Margin="184,53,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150"/>
+                                <ComboBox Name="compCBox" HorizontalAlignment="Left" Margin="347,53,0,0" VerticalAlignment="Top" Width="150" Height="30" />
+                                <Button Name="depSearch" Content="Search" HorizontalAlignment="Left" Margin="23,101,0,0" VerticalAlignment="Top" Width="150" Height="30" Click="depSearch_Click"/>
+                                <Button Name="depInsert" Content="Insert" HorizontalAlignment="Left" Margin="184,101,0,0" VerticalAlignment="Top" Width="150" Height="30" Click="depInsert_Click"/>
+                                <Button Name="depUpdate" Content="Update" HorizontalAlignment="Left" Margin="347,101,0,0" VerticalAlignment="Top" Width="150" Height="30" Click="depUpdate_Click"/>
+                                <Button Name="depDelete" Content="Delete" HorizontalAlignment="Left" Margin="510,101,0,0" VerticalAlignment="Top" Width="150" Height="30" Click="depDelete_Click"/>
+                                <Label Content="Departament ID" HorizontalAlignment="Left" Margin="36,19,0,0" VerticalAlignment="Top"/>
+                                <Label Content="Departament Name" HorizontalAlignment="Left" Margin="191,19,0,0" VerticalAlignment="Top"/>
+                                <Label Content="Company" HorizontalAlignment="Left" Margin="379,19,0,0" VerticalAlignment="Top"/>
+                                <DataGrid Name="depDG" HorizontalAlignment="Left" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False" ClipboardCopyMode="ExcludeHeader" Height="250" Margin="17,154,0,0" VerticalAlignment="Top" Width="650" SelectionChanged="depDG_SelectionChanged">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="ID" Width="150" Binding="{Binding departamentId}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="Departament Name" Width="200" Binding="{Binding DepartamentName}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="Company ID" Width="150" Binding="{Binding CompanyId}"></DataGridTextColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <Button Name="showAllDepBtn" Content="Show Departaments Info" HorizontalAlignment="Left" Height="30" Margin="23,429,0,0" VerticalAlignment="Top" Width="200" Click="showAllDepBtn_Click"/>
+                                <Button Name="clearDepBtn" Content="Clear" HorizontalAlignment="Left" Margin="547,429,0,0" VerticalAlignment="Top" Height="30" Width="120" Click="clearDepBtn_Click"/>
+                               
+                            </Grid>
+                        </TabItem>
+                        
+
+                    </TabControl>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Employees" Background="SlateGray" FontSize="14" FontWeight="DemiBold" BorderBrush="Black" BorderThickness="3" Initialized="EmpTabItem_Initialized">
+                <Grid Background="SlateGray">
+                    <TabControl  BorderBrush="Black" BorderThickness="3">
+                        <TabItem Header="Display" Background="SlateGray">
+                            <Grid Background="SlateGray">
+                                <TextBox Name="employeeIdTb" HorizontalAlignment="Left" Height="30" Margin="23,53,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="98"/>
+                                <TextBox Name="fNameTb" HorizontalAlignment="Left" Height="30" Margin="126,53,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="99"/>
+                                <TextBox Name="lNameTb" HorizontalAlignment="Left" Height="30" Margin="230,53,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="98"/>
+                                <TextBox Name="positionTb" HorizontalAlignment="Left" Margin="333,53,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="86" Height="30"/>
+                                <Button Name="eSearchBtn" Content="Search" HorizontalAlignment="Left" Margin="23,101,0,0" VerticalAlignment="Top" Width="150" Height="30" Click="eSearchBtn_Click"/>
+                                <Button Name="eInsertBtn" Content="Insert" HorizontalAlignment="Left" Margin="191,101,0,0" VerticalAlignment="Top" Width="150" Height="30" Click="eInsertBtn_Click" />
+                                <Button Name="eUpdateBtn" Content="Update" HorizontalAlignment="Left" Margin="357,101,0,0" VerticalAlignment="Top" Width="150" Height="30" Click="eUpdateBtn_Click"/>
+                                <Button Name="eDeleteBtn" Content="Delete" HorizontalAlignment="Left" Margin="523,101,0,0" VerticalAlignment="Top" Width="150" Height="30" Click="eDeleteBtn_Click"/>
+                                <Label Content="Employee ID" HorizontalAlignment="Left" Margin="27,19,0,0" VerticalAlignment="Top"/>
+                                <Label Content="First Name" HorizontalAlignment="Left" Margin="136,19,0,0" VerticalAlignment="Top"/>
+                                <Label Content="Last Name" HorizontalAlignment="Left" Margin="241,19,0,0" VerticalAlignment="Top"/>
+                                <Label Content="Position" HorizontalAlignment="Left" Margin="345,19,0,0" VerticalAlignment="Top"/>
+                                <DataGrid Name="showAllEmployeesGrid" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" HorizontalAlignment="Left" Height="250" Margin="23,148,0,0" VerticalAlignment="Top" Width="650" SelectionChanged="showAllEmployeesGrid_SelectionChanged" >
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="ID" Width="80" Binding="{Binding employeeID}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="First Name" Width="100" Binding="{Binding FirstName}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="Last Name" Width="100" Binding="{Binding LastName}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="Position" Width="100" Binding="{Binding Position}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="DepartamentID" Width="125" Binding="{Binding DepartamentId}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="Salary" Width="80" Binding="{Binding Salary}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="Union" Width="100" Binding="{Binding UnionMember}"></DataGridTextColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <Button Name="showAllEmploeesBtn" Content="Show Employees Info" HorizontalAlignment="Left" Margin="25,418,0,0" VerticalAlignment="Top" Width="200" Height="30" Click="showAllEmploeesBtn_Click"/>
+                                <Label Content="Departament ID" HorizontalAlignment="Left" Margin="422,19,0,0" VerticalAlignment="Top"/>
+                                <Label Content="Salary" HorizontalAlignment="Left" Margin="547,19,0,0" VerticalAlignment="Top" Width="59"/>
+                                <Label Content="Union" HorizontalAlignment="Left" Margin="617,19,0,0" VerticalAlignment="Top"/>
+                                <ComboBox Name="eDepIdBox" HorizontalAlignment="Left" Margin="424,53,0,0"  VerticalAlignment="Top" Width="103" Height="30"/>
+                                <TextBox Name="salaryTb" HorizontalAlignment="Left" Margin="532,53,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="75" Height="30"/>
+                                <ComboBox Name="unionBox" HorizontalAlignment="Left" Margin="613,53,0,0"  VerticalAlignment="Top" Width="61" Height="30"/>
+                                <Button Name="ClearEmpBtn" Content="Clear" HorizontalAlignment="Left" Margin="541,418,0,0" VerticalAlignment="Top" Height="30" Width="120" Click="ClearEmpBtn_Click"/>
+                                 </Grid>
+                        </TabItem>
+                        
+
+                    </TabControl>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Label Grid.Column="1" Content="Copyright by Ionut-Catalin Luca" FontSize="10" HorizontalAlignment="Right" Margin="0,0,10,8" Grid.Row="1" VerticalAlignment="Bottom" Width="172" Height="22" Grid.RowSpan="2"/>
+
+    </Grid>
+</Window>
+
