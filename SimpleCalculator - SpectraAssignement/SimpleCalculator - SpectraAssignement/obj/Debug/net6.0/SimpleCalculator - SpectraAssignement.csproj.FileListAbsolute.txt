@@ -1,0 +1,14 @@
+D:\Projects\SimpleCalculator - SpectraAssignement\SimpleCalculator - SpectraAssignement\bin\Debug\net6.0\SimpleCalculator - SpectraAssignement.exe
+D:\Projects\SimpleCalculator - SpectraAssignement\SimpleCalculator - SpectraAssignement\bin\Debug\net6.0\SimpleCalculator - SpectraAssignement.deps.json
+D:\Projects\SimpleCalculator - SpectraAssignement\SimpleCalculator - SpectraAssignement\bin\Debug\net6.0\SimpleCalculator - SpectraAssignement.runtimeconfig.json
+D:\Projects\SimpleCalculator - SpectraAssignement\SimpleCalculator - SpectraAssignement\bin\Debug\net6.0\SimpleCalculator - SpectraAssignement.dll
+D:\Projects\SimpleCalculator - SpectraAssignement\SimpleCalculator - SpectraAssignement\bin\Debug\net6.0\SimpleCalculator - SpectraAssignement.pdb
+D:\Projects\SimpleCalculator - SpectraAssignement\SimpleCalculator - SpectraAssignement\obj\Debug\net6.0\SimpleCalculator - SpectraAssignement.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\SimpleCalculator - SpectraAssignement\SimpleCalculator - SpectraAssignement\obj\Debug\net6.0\SimpleCalculator - SpectraAssignement.AssemblyInfoInputs.cache
+D:\Projects\SimpleCalculator - SpectraAssignement\SimpleCalculator - SpectraAssignement\obj\Debug\net6.0\SimpleCalculator - SpectraAssignement.AssemblyInfo.cs
+D:\Projects\SimpleCalculator - SpectraAssignement\SimpleCalculator - SpectraAssignement\obj\Debug\net6.0\SimpleCalculator - SpectraAssignement.csproj.CoreCompileInputs.cache
+D:\Projects\SimpleCalculator - SpectraAssignement\SimpleCalculator - SpectraAssignement\obj\Debug\net6.0\SimpleCalculator - SpectraAssignement.dll
+D:\Projects\SimpleCalculator - SpectraAssignement\SimpleCalculator - SpectraAssignement\obj\Debug\net6.0\refint\SimpleCalculator - SpectraAssignement.dll
+D:\Projects\SimpleCalculator - SpectraAssignement\SimpleCalculator - SpectraAssignement\obj\Debug\net6.0\SimpleCalculator - SpectraAssignement.pdb
+D:\Projects\SimpleCalculator - SpectraAssignement\SimpleCalculator - SpectraAssignement\obj\Debug\net6.0\SimpleCalculator - SpectraAssignement.genruntimeconfig.cache
+D:\Projects\SimpleCalculator - SpectraAssignement\SimpleCalculator - SpectraAssignement\obj\Debug\net6.0\ref\SimpleCalculator - SpectraAssignement.dll

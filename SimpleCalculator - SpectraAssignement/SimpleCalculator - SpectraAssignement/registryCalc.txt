@@ -1,0 +1,4 @@
+a add 10
+b add 5
+print a
+quit
