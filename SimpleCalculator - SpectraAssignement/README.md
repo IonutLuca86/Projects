@@ -1,4 +1,4 @@
-R
+
 Your task is to write a simple calculator that can add, subtract and multiply values in a set of registers.
 The syntax is quite simple:
 <register> <operation> <value>
